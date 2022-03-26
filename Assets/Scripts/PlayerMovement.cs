@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpCooldown;
     private float horizontalInput;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip jumpSound;
+
     private void Awake()
     {
         //Grab references for rigidbody and animator from object
@@ -58,8 +61,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded())
         {
-            body.velocity = new Vector2(body.velocity.x, jumpPower);
+            SoundManager.instance.PlaySound(jumpSound);
             anim.SetTrigger("jump");
+            body.velocity = new Vector2(body.velocity.x, jumpPower);
         }
         else if (onWall() && !isGrounded())
         {

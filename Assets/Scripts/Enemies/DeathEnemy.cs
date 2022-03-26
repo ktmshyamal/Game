@@ -16,6 +16,9 @@ public class DeathEnemy : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     private float cooldownTimer = Mathf.Infinity;
 
+    [Header("Attack Sound")]
+    [SerializeField] private AudioClip attackSound;
+
     private Animator anim;
     private Health playerHealth;
     private EnemyPatrol enemyPatrol;
@@ -33,10 +36,11 @@ public class DeathEnemy : MonoBehaviour
         //Attack only when player in sight?
         if (PlayerInSight())
         {
-            if (cooldownTimer >= attackCooldown)
+            if (cooldownTimer >= attackCooldown && playerHealth.currentHealth > 0)
             {
                 cooldownTimer = 0;
                 anim.SetTrigger("Attack");
+                SoundManager.instance.PlaySound(attackSound);
             }
         }
         if (enemyPatrol != null)

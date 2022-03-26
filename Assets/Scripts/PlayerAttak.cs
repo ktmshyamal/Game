@@ -12,6 +12,9 @@ public class PlayerAttak : MonoBehaviour
     private PlayerMovement playerMovement;
     private float cooldownTimer = Mathf.Infinity;
 
+    [Header("Attack Sound")]
+    [SerializeField] private AudioClip PlayerattackSound;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -22,12 +25,16 @@ public class PlayerAttak : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && cooldownTimer > attackCooldown && playerMovement.canAttack())
             Attack();
+        
+
 
         cooldownTimer += Time.deltaTime;
     }
 
     private void Attack()
     {
+        SoundManager.instance.PlaySound(PlayerattackSound);
+
         anim.SetTrigger("attack");
         cooldownTimer = 0;
     }

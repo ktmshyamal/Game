@@ -170,6 +170,7 @@ MonoBehaviour:
   attackCooldown: 0.5
   firePoint: {fileID: 0}
   fireballs: []
+  PlayerattackSound: {fileID: 8300000, guid: 6da0914b850d7d9478ed0c387e4feabf, type: 3}
 --- !u!95 &6996800759231569731
 Animator:
   serializedVersion: 3
