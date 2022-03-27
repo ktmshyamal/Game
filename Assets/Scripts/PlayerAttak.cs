@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class PlayerAttak : MonoBehaviour
@@ -25,8 +24,6 @@ public class PlayerAttak : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && cooldownTimer > attackCooldown && playerMovement.canAttack())
             Attack();
-        
-
 
         cooldownTimer += Time.deltaTime;
     }
@@ -34,7 +31,6 @@ public class PlayerAttak : MonoBehaviour
     private void Attack()
     {
         SoundManager.instance.PlaySound(PlayerattackSound);
-
         anim.SetTrigger("attack");
         cooldownTimer = 0;
     }

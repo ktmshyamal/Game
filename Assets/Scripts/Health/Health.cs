@@ -33,6 +33,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float _damage)
     {
+        if (invulnerable) return;
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
         if (currentHealth > 0)
@@ -46,14 +47,15 @@ public class Health : MonoBehaviour
             if (!dead)
             {
                 anim.SetTrigger("die");
+
+
                 //Deactivate all attached component classes
                 foreach (Behaviour component in components)
                     component.enabled = false;
 
                 dead = true;
                 SoundManager.instance.PlaySound(deathSound);
-            }
-            
+            }   
         }
     }
 

@@ -51,7 +51,12 @@ public class PlayerMovement : MonoBehaviour
                 body.gravityScale = 7;
 
             if (Input.GetKey(KeyCode.Space))
+            {
                 Jump();
+
+                if(Input.GetKeyDown(KeyCode.Space)&& isGrounded())
+                    SoundManager.instance.PlaySound(jumpSound);
+            }
         }
         else
             wallJumpCooldown += Time.deltaTime;
@@ -61,7 +66,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded())
         {
-            SoundManager.instance.PlaySound(jumpSound);
             anim.SetTrigger("jump");
             body.velocity = new Vector2(body.velocity.x, jumpPower);
         }
