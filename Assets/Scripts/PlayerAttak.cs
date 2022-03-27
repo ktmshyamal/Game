@@ -6,6 +6,7 @@ public class PlayerAttak : MonoBehaviour
     [SerializeField] private float attackCooldown;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] fireballs;
+    [SerializeField] private LayerMask enemy1;
 
     private Animator anim;
     private PlayerMovement playerMovement;

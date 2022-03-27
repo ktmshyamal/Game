@@ -155,6 +155,7 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 512
+  jumpSound: {fileID: 0}
 --- !u!114 &6996800759231569756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,3 +209,5 @@ MonoBehaviour:
   components:
   - {fileID: 6996800759231569756}
   - {fileID: 6996800759231569730}
+  deathSound: {fileID: 0}
+  hurtSound: {fileID: 0}

@@ -22,6 +22,7 @@ public class DeathEnemy : MonoBehaviour
     private Animator anim;
     private Health playerHealth;
     private EnemyPatrol enemyPatrol;
+    
 
     private void Awake()
     {
@@ -55,7 +56,7 @@ public class DeathEnemy : MonoBehaviour
             0, Vector2.left, 0, playerLayer);
 
         if (hit.collider != null)
-            playerHealth = hit.transform.GetComponent<Health>();
+             playerHealth = hit.transform.GetComponent<Health>();
 
         return hit.collider != null;
     }
@@ -70,7 +71,7 @@ public class DeathEnemy : MonoBehaviour
     private void DamagePlayer()
     {
         //If player still in range damage him
-        if (PlayerInSight())
+         if (PlayerInSight())
             playerHealth.TakeDamage(damage);
     }
 }

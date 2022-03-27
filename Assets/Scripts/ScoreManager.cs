@@ -5,38 +5,31 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static ScoreManager instance;
+    
 
     public Text scoreText;
-    public Text hignscoreText;
-
-    int score = 0;
-    int highscore = 0;
-
-    private void Awake()
-    {
-        instance = this;
-    }
+    private int ScoreNum;
 
     // Start is called before the first frame update
     void Start()
     {
-        highscore = PlayerPrefs.GetInt("highscore", 0);
-        scoreText.text = score.ToString() + " POINTS";
-        hignscoreText.text = "HIGHSCORE: " + highscore.ToString();
+        ScoreNum = 0;
+        scoreText.text = "Score : " + ScoreNum;
+        
     }
 
-    public void AddPoint()
+    private void OnTriggerEnter2D(Collider2D Coin)
     {
-        score += 1;
-        scoreText.text = score.ToString() + "POINTS";
-        if (highscore < score)
-            PlayerPrefs.SetFloat("highscore", score);
-    }
+        if (Coin.tag == "Mycoin")
+        {
+            
+            ScoreNum += 1;
+            
+            Destroy(Coin.gameObject);
+            scoreText.text = "Score : " + ScoreNum;
+            
 
-    // Update is called once per frame
-    void Update()
-    {
+        }
         
     }
 }
